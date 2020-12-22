@@ -7,6 +7,7 @@ import {OutroComponent} from '../app/components/outro/outro.component';
 import {InterviewQuestionComponent} from '../app/components/interview-question/interview-question.component';
 import {InterviewResultComponent} from '../app/components/interview-result/interview-result.component'
 import {InterviewdetailsComponent} from '../app/components/interviewdetails/interviewdetails.component'
+import {TempComponent} from '../app/components/temp/temp.component'
 
 const routes: Routes = [{ path: '', component: LandingComponent },
 { path: 'interviewselection', component: InterviewSelectionComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [{ path: '', component: LandingComponent },
 { path: 'interviewoutro', component: OutroComponent },
 { path: 'interviewquestion', component: InterviewQuestionComponent },
 { path: 'interviewresults', component: InterviewResultComponent },
-{path: 'interviewdetails', component:InterviewdetailsComponent}];
+{path: 'interviewdetails', component:InterviewdetailsComponent},
+{path: 'temp', component:TempComponent},];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

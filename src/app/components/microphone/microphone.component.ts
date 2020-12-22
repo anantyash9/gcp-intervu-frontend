@@ -76,7 +76,7 @@ export class MicrophoneComponent implements OnInit {
               // get intervals based blobs
               // value in milliseconds
               // as you might not want to make detect calls every seconds
-              timeSlice: 14000,
+              timeSlice: 2000,
 
               // only for audio track
               audioBitsPerSecond: 128000,

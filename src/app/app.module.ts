@@ -26,6 +26,8 @@ import { OutroComponent } from './components/outro/outro.component';
 import { InterviewResultComponent } from './components/interview-result/interview-result.component';
 import { InterviewcardComponent } from './components/interviewcard/interviewcard.component';
 import {InterviewdetailsComponent} from '../app/components/interviewdetails/interviewdetails.component';
+import { TempComponent } from './components/temp/temp.component';
+import { SstComponent } from './components/sst/sst.component';
 function initializeKeycloak(keycloak: KeycloakService) {
   // const keycloak = new KeycloakService();
   return () =>
@@ -58,7 +60,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
     OutroComponent,
     InterviewResultComponent,
     InterviewcardComponent,
-    InterviewdetailsComponent
+    InterviewdetailsComponent,
+    TempComponent,
+    SstComponent
     
   ],
   imports: [

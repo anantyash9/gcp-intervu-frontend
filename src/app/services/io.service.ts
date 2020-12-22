@@ -7,7 +7,6 @@ export class IoService {
     public socket: any;
     public socketio: any;
     public lang: string;
-    streamcount=0;
 
     constructor() {
       this.socketio = io('',{path:'/socket.io/socket.io'});
@@ -23,13 +22,12 @@ export class IoService {
     }
 
     sendBinaryStream(blob: any,speechContext:string[]) {
-        this.streamcount++
         const me = this;
         const stream = ss.createStream();
         // stream directly to server
         // it will be temp. stored locally
         ss(me.socket).emit('stream-speech', stream, {
-            name: '_temp/stream'+this.streamcount+'.wav',
+            name: '_temp/stream.wav',
             size: blob.size,
             language: me.lang,
             speechContext:speechContext
@@ -39,7 +37,10 @@ export class IoService {
     }
 
     sendMessage(eventName: string, obj: any) {
+        try{
         obj.audio.language = this.lang;
+        }
+        catch{}
         this.socketio.emit(eventName, obj);
     }
 
