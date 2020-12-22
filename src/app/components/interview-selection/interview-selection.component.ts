@@ -25,7 +25,11 @@ export class InterviewSelectionComponent implements OnInit {
     this.interviewservice.loadQuestionSets().subscribe(questionsets => { 
       this.interviewservice.getCurrentQuestion().subscribe(data=>{
         console.log(data)
-        this.questionsets=questionsets.filter((questionset)=>{return questionset.name==data.body.interviewqs.questionset.name});
+        if (data.status==200){
+        this.questionsets=questionsets.filter((questionset)=>{return questionset.name==data.body.interviewqs.questionset.name});}
+        else{
+          this.questionsets=questionsets;
+        }
       }
       ,error=>{this.questionsets = questionsets;})
       
