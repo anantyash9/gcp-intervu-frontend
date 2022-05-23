@@ -42,7 +42,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
         onLoad: "login-required",
         checkLoginIframe: true,
       },
-      bearerExcludedUrls: ['/similarity','/api'],
+      bearerExcludedUrls: ['/similarity','/api','intervu.surveymaster.in/api'],
     });
 }
 

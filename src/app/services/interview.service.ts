@@ -14,13 +14,14 @@ export class InterviewService {
   result: Result;
   resultdetails;
   questionset: Questionset;
-  questionSetAPI="/api/question-sets"
-  interviewInitializeAPI='/api/ext/interview-questions/initialize/'
-  getcurrentquestionAPI='/api/ext/interview-questions/current/'
-  updatescoreAPI='/api/ext/interview-questions/update/score/'
+  baseurl="https://intervu.surveymaster.in";
+  questionSetAPI=this.baseurl+"/api/question-sets"
+  interviewInitializeAPI=this.baseurl+'/api/ext/interview-questions/initialize/'
+  getcurrentquestionAPI=this.baseurl+'/api/ext/interview-questions/current/'
+  updatescoreAPI=this.baseurl+'/api/ext/interview-questions/update/score/'
   similarityAPI='/similarity'
-  getresultAPI='/api/ext/interview-question-sets/interviewee/questions/'
-  getresultdetailsAPI='/api/ext/interview-questions/interviewee/questions/'
+  getresultAPI=this.baseurl+'/api/ext/interview-question-sets/interviewee/questions/'
+  getresultdetailsAPI=this.baseurl+'/api/ext/interview-questions/interviewee/questions/'
   constructor(private keycloakservice: KeycloakService,private http:HttpClient) {
     this.reqHeader = new HttpHeaders({ 
     'Content-Type': 'application/json',
@@ -35,7 +36,7 @@ export class InterviewService {
   }
 
   initializeInterview():Observable<any>{
-    return this.http.post<any>(this.interviewInitializeAPI+encodeURIComponent(this.keycloakservice.getUsername()),this.questionset.name,{ headers: this.reqHeader ,observe: 'response'});
+    return this.http.post<any>(this.interviewInitializeAPI+encodeURIComponent(this.keycloakservice.getUsername()),{questionSet :this.questionset.name},{ headers: this.reqHeader ,observe: 'response'});
   }
   getCurrentQuestion():Observable<any>{
     return this.http.get<any>(this.getcurrentquestionAPI+encodeURIComponent(this.keycloakservice.getUsername()),{ headers: this.reqHeader ,observe: 'response'});
